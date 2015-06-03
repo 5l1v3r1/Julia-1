@@ -30,25 +30,25 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuAction = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.list = new Julia.ListViewExtended();
-            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTags = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuFileTag = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuFileImport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImportText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImportDb = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileExport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileExportText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileExportDb = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditEngrave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEditRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAction = new System.Windows.Forms.ToolStripMenuItem();
             this.menuActionSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.list = new Julia.ListViewExtended();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTags = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,79 +75,17 @@
             this.menuFile.Size = new System.Drawing.Size(37, 20);
             this.menuFile.Text = "File";
             // 
-            // menuEdit
-            // 
-            this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuEditEdit,
-            this.menuEditEngrave,
-            this.toolStripSeparator2,
-            this.menuEditRemove});
-            this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(39, 20);
-            this.menuEdit.Text = "Edit";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
-            // 
-            // menuAction
-            // 
-            this.menuAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuActionSearch});
-            this.menuAction.Name = "menuAction";
-            this.menuAction.Size = new System.Drawing.Size(54, 20);
-            this.menuAction.Text = "Action";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(122, 6);
-            // 
-            // list
-            // 
-            this.list.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.list.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colName,
-            this.colPath,
-            this.colTags});
-            this.list.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.list.FullRowSelect = true;
-            this.list.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.list.Location = new System.Drawing.Point(-1, 24);
-            this.list.Name = "list";
-            this.list.OwnerDraw = true;
-            this.list.SingleColumn = false;
-            this.list.Size = new System.Drawing.Size(615, 400);
-            this.list.TabIndex = 1;
-            this.list.UseCompatibleStateImageBehavior = false;
-            this.list.View = System.Windows.Forms.View.Details;
-            this.list.SelectedIndexChanged += new System.EventHandler(this.list_SelectedIndexChanged);
-            // 
-            // colName
-            // 
-            this.colName.Text = "Name";
-            this.colName.Width = 120;
-            // 
-            // colPath
-            // 
-            this.colPath.Text = "Path";
-            this.colPath.Width = 357;
-            // 
-            // colTags
-            // 
-            this.colTags.Text = "Tags";
-            this.colTags.Width = 133;
-            // 
             // menuFileTag
             // 
             this.menuFileTag.Image = global::Julia.Properties.Resources.tag_blue;
             this.menuFileTag.Name = "menuFileTag";
             this.menuFileTag.Size = new System.Drawing.Size(122, 22);
             this.menuFileTag.Text = "Tag file...";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
             // 
             // menuFileImport
             // 
@@ -197,6 +135,17 @@
             this.menuFileExportDb.Size = new System.Drawing.Size(122, 22);
             this.menuFileExportDb.Text = "Database";
             // 
+            // menuEdit
+            // 
+            this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuEditEdit,
+            this.menuEditEngrave,
+            this.toolStripSeparator2,
+            this.menuEditRemove});
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(39, 20);
+            this.menuEdit.Text = "Edit";
+            // 
             // menuEditEdit
             // 
             this.menuEditEdit.Enabled = false;
@@ -213,6 +162,11 @@
             this.menuEditEngrave.Size = new System.Drawing.Size(125, 22);
             this.menuEditEngrave.Text = "Engrave...";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(122, 6);
+            // 
             // menuEditRemove
             // 
             this.menuEditRemove.Enabled = false;
@@ -222,12 +176,58 @@
             this.menuEditRemove.Text = "Remove";
             this.menuEditRemove.Click += new System.EventHandler(this.menuEditRemove_Click);
             // 
+            // menuAction
+            // 
+            this.menuAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuActionSearch});
+            this.menuAction.Name = "menuAction";
+            this.menuAction.Size = new System.Drawing.Size(54, 20);
+            this.menuAction.Text = "Action";
+            // 
             // menuActionSearch
             // 
             this.menuActionSearch.Image = global::Julia.Properties.Resources.magnifier;
             this.menuActionSearch.Name = "menuActionSearch";
             this.menuActionSearch.Size = new System.Drawing.Size(109, 22);
             this.menuActionSearch.Text = "Search";
+            // 
+            // list
+            // 
+            this.list.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.list.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colPath,
+            this.colTags});
+            this.list.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.list.FullRowSelect = true;
+            this.list.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.list.Location = new System.Drawing.Point(-1, 24);
+            this.list.Name = "list";
+            this.list.OwnerDraw = true;
+            this.list.SingleColumn = false;
+            this.list.Size = new System.Drawing.Size(615, 400);
+            this.list.TabIndex = 1;
+            this.list.UseCompatibleStateImageBehavior = false;
+            this.list.View = System.Windows.Forms.View.Details;
+            this.list.SelectedIndexChanged += new System.EventHandler(this.list_SelectedIndexChanged);
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 120;
+            // 
+            // colPath
+            // 
+            this.colPath.Text = "Path";
+            this.colPath.Width = 357;
+            // 
+            // colTags
+            // 
+            this.colTags.Text = "Tags";
+            this.colTags.Width = 133;
             // 
             // Main
             // 

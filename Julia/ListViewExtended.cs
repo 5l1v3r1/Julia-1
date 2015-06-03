@@ -17,7 +17,6 @@ namespace Julia
     public class ListViewExtended : ListView
     {
         public static Color cInuse = Color.FromArgb(255, 200, 140);
-        //public static Color cSelected = Color.FromArgb(150, 160, 255);
         public static Color cSelected = Color.FromArgb(0xC1, 0xDB, 0xFC);
         public static Color cUpdated = Color.FromArgb(140, 210, 140);
 
@@ -83,7 +82,7 @@ namespace Julia
                 e.DrawBackground();
 
                 int x = e.Bounds.X + 3;
-                int MID = (int)Math.Round((e.Bounds.Height / 2f) - (e.Font.GetHeight() / 2f));
+                int MID = (int)Math.Round((e.Bounds.Height / 2f) - (hFont.GetHeight() / 2f));
                 int y = e.Bounds.Y + MID;
 
                 TextRenderer.DrawText(e.Graphics, e.Header.Text, hFont, new Point(x, y), Color.Black);
@@ -108,7 +107,6 @@ namespace Julia
                     short r = (short)(bg.R + Math.Round((255 - bg.R) * MOD_GRADIENT));
                     short g = (short)(bg.G + Math.Round((255 - bg.G) * MOD_GRADIENT));
                     short b = (short)(bg.B + Math.Round((255 - bg.B) * MOD_GRADIENT));
-                    //MessageBox.Show(r + ":" + g + ":" + b);
 
                     if (r > 255) r = 255;
                     if (g > 255) g = 255;
@@ -128,8 +126,8 @@ namespace Julia
                         lvig.Extreme = new Pen(Color.FromArgb(r, g, b));
                     }
                 }
-
-                //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                
+                /* Draw background */
                 e.Graphics.FillRectangle(lvig.Gradient, new Rectangle(e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2));
                 /* Top */
                 e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Y, e.Bounds.Width - 2, e.Bounds.Y);
@@ -141,20 +139,18 @@ namespace Julia
                 e.Graphics.DrawLine(lvig.Extreme, e.Bounds.Right - 1, e.Bounds.Y + 1, e.Bounds.Right - 1, e.Bounds.Bottom - 2);
 
                 if (bg == Color.White) e.Graphics.FillRectangle(SystemBrushes.MenuBar, new Rectangle(e.Bounds.X, e.Bounds.Y, Columns[0].Width - 1, e.Bounds.Height));
-                //e.Graphics.FillRectangle(Brushes.Orange, e.Bounds);
-                //e.DrawText();
+                
                 int offsetx = 0;
                 for (int i = 0; i < e.Item.SubItems.Count; i++)
                 {
                     if (i > 0) offsetx += this.Columns[i - 1].Width;
                     int x = e.Bounds.X + 3 + offsetx;
-                    if (MID == 0f) MID = (int)Math.Round((e.Bounds.Height / 2) - (e.Item.Font.GetHeight() / 2));
-                    int y = e.Bounds.Y + MID - 1;
-                    //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    //e.Graphics.DrawString(e.Item.SubItems[i].Text, e.Item.Font, Brushes.Black, x, y);
+                    if (MID == 0f) MID = (int)Math.Round((e.Bounds.Height / 2f) - (iFont.GetHeight() / 2f));
+                    int y = e.Bounds.Y + MID - 4;
+
                     if (i == 0 && ImageListExt.Count > 0 && ((ListViewItemGradient)e.Item).ImageIndexExt >= 0 && ((ListViewItemGradient)e.Item).ImageIndexExt < ImageListExt.Count)
                     {
-                        e.Graphics.DrawImage(ImageListExt[((ListViewItemGradient)e.Item).ImageIndexExt], x, y);
+                        e.Graphics.DrawImage(ImageListExt[((ListViewItemGradient)e.Item).ImageIndexExt], x, e.Bounds.Y + 2);
                         TextRenderer.DrawText(e.Graphics, e.Item.SubItems[i].Text, iFont, new Rectangle(x + 18, y, Columns[i].Width, e.Bounds.Height), Color.Black, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
                     }
                     else TextRenderer.DrawText(e.Graphics, e.Item.SubItems[i].Text, iFont, new Rectangle(x, y, Columns[i].Width, e.Bounds.Height), Color.Black, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
