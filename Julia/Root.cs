@@ -8,7 +8,7 @@ using System.Text;
 
 public class Root
 {
-    //Linux uses / as a delimiter for pathes as opposed to \ which Windows uses, make sure to use the correct delimiter for the OS we've been compiled on
+    //Linux uses / as a delimiter for paths as opposed to \ which Windows uses, make sure to use the correct delimiter for the OS we've been compiled on
     #if __MonoCS__
     public const char PathDelimiter = '/';
     #else
