@@ -106,6 +106,11 @@ namespace Julia
 
             if (ofd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
 
+            TagFile tf = new TagFile();
+            tf.ShowDialog();
+
+            if (tf.Canceled) return;
+
             foreach (string file in ofd.FileNames)
             {
                 FileAttributes attr = File.GetAttributes(file);
