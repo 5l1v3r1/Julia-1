@@ -60,7 +60,7 @@
             this.menuAction});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(613, 24);
+            this.menuStrip.Size = new System.Drawing.Size(722, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "Menu";
             // 
@@ -79,14 +79,14 @@
             // 
             this.menuFileTag.Image = global::Julia.Properties.Resources.tag_blue;
             this.menuFileTag.Name = "menuFileTag";
-            this.menuFileTag.Size = new System.Drawing.Size(152, 22);
+            this.menuFileTag.Size = new System.Drawing.Size(122, 22);
             this.menuFileTag.Text = "Tag file...";
             this.menuFileTag.Click += new System.EventHandler(this.menuFileTag_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
             // 
             // menuFileImport
             // 
@@ -95,7 +95,7 @@
             this.menuFileImportDb});
             this.menuFileImport.Image = global::Julia.Properties.Resources.arrow_down;
             this.menuFileImport.Name = "menuFileImport";
-            this.menuFileImport.Size = new System.Drawing.Size(152, 22);
+            this.menuFileImport.Size = new System.Drawing.Size(122, 22);
             this.menuFileImport.Text = "Import...";
             // 
             // menuFileImportText
@@ -119,7 +119,7 @@
             this.menuFileExportDb});
             this.menuFileExport.Image = global::Julia.Properties.Resources.disk;
             this.menuFileExport.Name = "menuFileExport";
-            this.menuFileExport.Size = new System.Drawing.Size(152, 22);
+            this.menuFileExport.Size = new System.Drawing.Size(122, 22);
             this.menuFileExport.Text = "Export...";
             // 
             // menuFileExportText
@@ -209,7 +209,7 @@
             this.list.Name = "list";
             this.list.OwnerDraw = true;
             this.list.SingleColumn = false;
-            this.list.Size = new System.Drawing.Size(615, 400);
+            this.list.Size = new System.Drawing.Size(724, 317);
             this.list.TabIndex = 1;
             this.list.UseCompatibleStateImageBehavior = false;
             this.list.View = System.Windows.Forms.View.Details;
@@ -218,24 +218,24 @@
             // colName
             // 
             this.colName.Text = "Name";
-            this.colName.Width = 120;
+            this.colName.Width = 185;
             // 
             // colPath
             // 
             this.colPath.Text = "Path";
-            this.colPath.Width = 357;
+            this.colPath.Width = 368;
             // 
             // colTags
             // 
             this.colTags.Text = "Tags";
-            this.colTags.Width = 133;
+            this.colTags.Width = 160;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(613, 423);
+            this.ClientSize = new System.Drawing.Size(722, 340);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.list);
             this.MainMenuStrip = this.menuStrip;
