@@ -24,6 +24,18 @@ namespace Julia
 
             ToolStripMenuItem i1 = new ToolStripMenuItem("Add tag...");
             i1.Image = Properties.Resources.tag_blue;
+            i1.Click += delegate
+            {
+                AddTag at = new AddTag();
+                at.ShowDialog();
+
+                if (at.Canceled || at.Tag.Length < 1) return;
+
+                foreach (ListViewItem i in taglist.Items)
+                    if (i.Text == at.Tag) return;
+
+                taglist.Items.Add(new ListViewItemGradient(at.Tag) { BackColor = Color.White });
+            };
             cms.Items.Add(i1);
 
             cms.Items.Add(new ToolStripSeparator());

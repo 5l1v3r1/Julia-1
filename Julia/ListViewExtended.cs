@@ -126,19 +126,35 @@ namespace Julia
                         lvig.Extreme = new Pen(Color.FromArgb(r, g, b));
                     }
                 }
-                
-                /* Draw background */
-                e.Graphics.FillRectangle(lvig.Gradient, new Rectangle(e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2));
-                /* Top */
-                e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Y, e.Bounds.Width - 2, e.Bounds.Y);
-                /* Bottom */
-                e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Bottom - 1, e.Bounds.Width - 2, e.Bounds.Bottom - 1);
-                /* Left */
-                e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X, e.Bounds.Y + 1, e.Bounds.X, e.Bounds.Bottom - 2);
-                /* Right */
-                e.Graphics.DrawLine(lvig.Extreme, e.Bounds.Right - 1, e.Bounds.Y + 1, e.Bounds.Right - 1, e.Bounds.Bottom - 2);
 
-                if (bg == Color.White) e.Graphics.FillRectangle(SystemBrushes.MenuBar, new Rectangle(e.Bounds.X, e.Bounds.Y, Columns[0].Width - 1, e.Bounds.Height));
+                if (!GridLines)
+                {
+                    /* Draw background */
+                    e.Graphics.FillRectangle(lvig.Gradient, new Rectangle(e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2));
+                    /* Top */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Y, e.Bounds.Width - 2, e.Bounds.Y);
+                    /* Bottom */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Bottom - 1, e.Bounds.Width - 2, e.Bounds.Bottom - 1);
+                    /* Left */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X, e.Bounds.Y + 1, e.Bounds.X, e.Bounds.Bottom - 2);
+                    /* Right */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.Right - 1, e.Bounds.Y + 1, e.Bounds.Right - 1, e.Bounds.Bottom - 2);
+                }
+                else
+                {
+                    /* Draw background */
+                    e.Graphics.FillRectangle(lvig.Gradient, new Rectangle(e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2));
+                    /* Top */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Y, e.Bounds.Width - 2, e.Bounds.Y);
+                    /* Bottom */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X + 1, e.Bounds.Bottom - 2, e.Bounds.Width - 2, e.Bounds.Bottom - 2);
+                    /* Left */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.X, e.Bounds.Y + 1, e.Bounds.X, e.Bounds.Bottom - 3);
+                    /* Right */
+                    e.Graphics.DrawLine(lvig.Extreme, e.Bounds.Right - 1, e.Bounds.Y + 1, e.Bounds.Right - 1, e.Bounds.Bottom - 3);
+                }
+
+                if (!SingleColumn && bg == Color.White) e.Graphics.FillRectangle(SystemBrushes.MenuBar, new Rectangle(e.Bounds.X, e.Bounds.Y, Columns[0].Width - 1, e.Bounds.Height));
                 
                 int offsetx = 0;
                 for (int i = 0; i < e.Item.SubItems.Count; i++)
@@ -146,7 +162,7 @@ namespace Julia
                     if (i > 0) offsetx += this.Columns[i - 1].Width;
                     int x = e.Bounds.X + 3 + offsetx;
                     if (MID == 0f) MID = (int)Math.Round((e.Bounds.Height / 2f) - (iFont.GetHeight() / 2f));
-                    int y = e.Bounds.Y + MID - 4;
+                    int y = e.Bounds.Y + MID - (GridLines ? 5 : 4);
 
                     if (i == 0 && ImageListExt.Count > 0 && ((ListViewItemGradient)e.Item).ImageIndexExt >= 0 && ((ListViewItemGradient)e.Item).ImageIndexExt < ImageListExt.Count)
                     {

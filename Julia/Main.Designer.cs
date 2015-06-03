@@ -30,20 +30,20 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileTag = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuAction = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileTag = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImportText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImportDb = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileExport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileExportText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileExportDb = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditEngrave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEditRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAction = new System.Windows.Forms.ToolStripMenuItem();
             this.menuActionSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.list = new Julia.ListViewExtended();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -75,6 +75,35 @@
             this.menuFile.Size = new System.Drawing.Size(37, 20);
             this.menuFile.Text = "File";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
+            // 
+            // menuEdit
+            // 
+            this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuEditEdit,
+            this.menuEditEngrave,
+            this.toolStripSeparator2,
+            this.menuEditRemove});
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(39, 20);
+            this.menuEdit.Text = "Edit";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // menuAction
+            // 
+            this.menuAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuActionSearch});
+            this.menuAction.Name = "menuAction";
+            this.menuAction.Size = new System.Drawing.Size(54, 20);
+            this.menuAction.Text = "Action";
+            // 
             // menuFileTag
             // 
             this.menuFileTag.Image = global::Julia.Properties.Resources.tag_blue;
@@ -82,11 +111,6 @@
             this.menuFileTag.Size = new System.Drawing.Size(122, 22);
             this.menuFileTag.Text = "Tag file...";
             this.menuFileTag.Click += new System.EventHandler(this.menuFileTag_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
             // 
             // menuFileImport
             // 
@@ -136,23 +160,12 @@
             this.menuFileExportDb.Size = new System.Drawing.Size(122, 22);
             this.menuFileExportDb.Text = "Database";
             // 
-            // menuEdit
-            // 
-            this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuEditEdit,
-            this.menuEditEngrave,
-            this.toolStripSeparator2,
-            this.menuEditRemove});
-            this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(39, 20);
-            this.menuEdit.Text = "Edit";
-            // 
             // menuEditEdit
             // 
             this.menuEditEdit.Enabled = false;
             this.menuEditEdit.Image = global::Julia.Properties.Resources.pencil;
             this.menuEditEdit.Name = "menuEditEdit";
-            this.menuEditEdit.Size = new System.Drawing.Size(125, 22);
+            this.menuEditEdit.Size = new System.Drawing.Size(152, 22);
             this.menuEditEdit.Text = "Edit item";
             // 
             // menuEditEngrave
@@ -160,30 +173,17 @@
             this.menuEditEngrave.Enabled = false;
             this.menuEditEngrave.Image = global::Julia.Properties.Resources.page_white_edit;
             this.menuEditEngrave.Name = "menuEditEngrave";
-            this.menuEditEngrave.Size = new System.Drawing.Size(125, 22);
+            this.menuEditEngrave.Size = new System.Drawing.Size(152, 22);
             this.menuEditEngrave.Text = "Engrave...";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(122, 6);
             // 
             // menuEditRemove
             // 
             this.menuEditRemove.Enabled = false;
             this.menuEditRemove.Image = global::Julia.Properties.Resources.cross;
             this.menuEditRemove.Name = "menuEditRemove";
-            this.menuEditRemove.Size = new System.Drawing.Size(125, 22);
+            this.menuEditRemove.Size = new System.Drawing.Size(152, 22);
             this.menuEditRemove.Text = "Remove";
             this.menuEditRemove.Click += new System.EventHandler(this.menuEditRemove_Click);
-            // 
-            // menuAction
-            // 
-            this.menuAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuActionSearch});
-            this.menuAction.Name = "menuAction";
-            this.menuAction.Size = new System.Drawing.Size(54, 20);
-            this.menuAction.Text = "Action";
             // 
             // menuActionSearch
             // 
