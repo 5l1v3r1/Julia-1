@@ -103,6 +103,7 @@
     <None Include="Resources\page_white_edit.png" />
     <None Include="Resources\tag_blue.png" />
     <None Include="Resources\pencil.png" />
+    <None Include="Resources\cd.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
