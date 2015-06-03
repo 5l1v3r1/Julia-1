@@ -151,7 +151,7 @@ namespace Julia
                     if (i == 0 && ImageListExt.Count > 0 && ((ListViewItemGradient)e.Item).ImageIndexExt >= 0 && ((ListViewItemGradient)e.Item).ImageIndexExt < ImageListExt.Count)
                     {
                         e.Graphics.DrawImage(ImageListExt[((ListViewItemGradient)e.Item).ImageIndexExt], x, e.Bounds.Y + 2);
-                        TextRenderer.DrawText(e.Graphics, e.Item.SubItems[i].Text, iFont, new Rectangle(x + 18, y, Columns[i].Width, e.Bounds.Height), Color.Black, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
+                        TextRenderer.DrawText(e.Graphics, e.Item.SubItems[i].Text, iFont, new Rectangle(x + 18, y, Columns[i].Width - 20, e.Bounds.Height), Color.Black, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
                     }
                     else TextRenderer.DrawText(e.Graphics, e.Item.SubItems[i].Text, iFont, new Rectangle(x, y, Columns[i].Width, e.Bounds.Height), Color.Black, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
                 }

@@ -27,26 +27,15 @@ namespace Julia
             list.ImageListExt.Add(Properties.Resources.database);
             list.ImageListExt.Add(Properties.Resources.page_white_zip);
             list.ImageListExt.Add(Properties.Resources.cd);
-
-            for (int i = 0; i < 8; i++)
-            {
-                ListViewItemGradient dong = new ListViewItemGradient("Name") { BackColor = Color.White };
-                dong.SubItems.Add(@"C:\Users\Administrator.AUD122024G\Documents\Visual Studio 2012\Projects\Julia\img\");
-                dong.SubItems.Add("Path");
-                dong.ImageIndexExt = i;
-                list.Items.Add(dong);
-            }
         }
 
         int GetIcon(string f)
         {
-            if (Directory.Exists(f)) return 0;
-
-            switch (Path.GetExtension(f))
+            switch (Path.GetExtension(f).TrimStart('.'))
             {
                 case "iso":
                 case "bin":
-                case "bmg":
+                case "dmg":
                 case "cue":
                 case "dat":
                     return 7;
@@ -74,6 +63,7 @@ namespace Julia
                 case "tiff":
                 case "tif":
                 case "gif":
+                case "bmp":
                     return 3;
                 case "rtf":
                 case "doc":
@@ -99,6 +89,33 @@ namespace Julia
         {
             if (MessageBox.Show("Are you sure you want to remove the selected " + (list.SelectedIndices.Count > 1 ? list.SelectedIndices.Count + " files" : "file") + "?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != System.Windows.Forms.DialogResult.Yes)
                 return;
+        }
+
+        private void menuFileTag_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter =
+            "All files (*.*)|*.*|" +
+            "Image (*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tiff;*.tif)|*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tiff;*.tif|" +
+            "Document (*.txt;*.tex;*.rtf;*.doc;*.docx;*.pdf)|*.txt;*.tex;*.rtf;*.doc;*.docx;*.pdf|" +
+            "Executable (*.exe;*.bat;*.msi;*.jar)|*.exe;*.bat;*.msi;*.jar|" +
+            "Archive (*.zip;*.rar;*.7z;*.bz2;*.bz;*.gz;*.lz;*.xz)|*.zip;*.rar;*.7z;*.bz2;*.bz;*.gz;*.lz;*.xz|" +
+            "Disc image (*.iso;*.bin;*.dmg;*.cue;*.dat)|*.iso;*.bin;*.dmg;*.cue;*.dat|" +
+            "Database (*.sql;*.db;*.sqlite;*.mysql)|*.sql;*.db;*.sqlite;*.mysql";
+            ofd.Multiselect = true;
+
+            if (ofd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+
+            foreach (string file in ofd.FileNames)
+            {
+                FileAttributes attr = File.GetAttributes(file);
+
+                ListViewItemGradient lvi = new ListViewItemGradient(Path.GetFileName(file)) { BackColor = Color.White };
+                lvi.SubItems.Add(Path.GetDirectoryName(file));
+                lvi.SubItems.Add("n/a");
+                lvi.ImageIndexExt = ((attr & FileAttributes.Directory) == FileAttributes.Directory ? 0 : GetIcon(file));
+                list.Items.Add(lvi);
+            }
         }
     }
 }

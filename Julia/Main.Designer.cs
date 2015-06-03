@@ -79,13 +79,14 @@
             // 
             this.menuFileTag.Image = global::Julia.Properties.Resources.tag_blue;
             this.menuFileTag.Name = "menuFileTag";
-            this.menuFileTag.Size = new System.Drawing.Size(122, 22);
+            this.menuFileTag.Size = new System.Drawing.Size(152, 22);
             this.menuFileTag.Text = "Tag file...";
+            this.menuFileTag.Click += new System.EventHandler(this.menuFileTag_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // menuFileImport
             // 
@@ -94,7 +95,7 @@
             this.menuFileImportDb});
             this.menuFileImport.Image = global::Julia.Properties.Resources.arrow_down;
             this.menuFileImport.Name = "menuFileImport";
-            this.menuFileImport.Size = new System.Drawing.Size(122, 22);
+            this.menuFileImport.Size = new System.Drawing.Size(152, 22);
             this.menuFileImport.Text = "Import...";
             // 
             // menuFileImportText
@@ -118,7 +119,7 @@
             this.menuFileExportDb});
             this.menuFileExport.Image = global::Julia.Properties.Resources.disk;
             this.menuFileExport.Name = "menuFileExport";
-            this.menuFileExport.Size = new System.Drawing.Size(122, 22);
+            this.menuFileExport.Size = new System.Drawing.Size(152, 22);
             this.menuFileExport.Text = "Export...";
             // 
             // menuFileExportText
