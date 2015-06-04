@@ -10,7 +10,7 @@ It uses an SQLite database for storing file information and then querying the da
 
 ## Features
 
-* **Arbitrary tags**
+* Arbitrary tags
 * **SQLite file search**
 * **Import and export tags to share or use elsewhere**
 * **Engrave files to permanently attach tags to files**
