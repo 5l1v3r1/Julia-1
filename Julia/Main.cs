@@ -122,8 +122,11 @@ namespace Julia
 
             foreach (ListViewItem i in list.Items)
             {
-                if(Database.NonQuery("DELETE FROM files WHERE rowid=" + i.SubItems[3].Text, Root.Connection) != null)
+                if (Database.NonQuery("DELETE FROM files WHERE rowid=" + i.SubItems[3].Text, Root.Connection) != null)
+                {
                     i.Remove();
+                    lastrowid--;
+                }
             }
         }
 
@@ -177,7 +180,7 @@ namespace Julia
                 newfile = true;
                 QueryResult res = Database.NonQuery("INSERT INTO files (path,tags) VALUES ('" + rfile + "', '" + sb.ToString() + "')", Root.Connection);
             }
-            if (newfile) ReloadTags();
+            if (newfile) ReloadFiles();
         }
 
         public new class Tag

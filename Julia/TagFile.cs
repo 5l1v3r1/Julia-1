@@ -43,6 +43,10 @@ namespace Julia
 
             i2 = new ToolStripMenuItem("Remove");
             i2.Image = Properties.Resources.cross;
+            i2.Click += delegate
+            {
+                foreach (ListViewItem i in taglist.SelectedItems) i.Remove();
+            };
             i2.Enabled = false;
             cms.Items.Add(i2);
 
