@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -11,6 +12,9 @@ namespace Julia
 {
     public partial class Main : Form
     {
+        ToolStripMenuItem cmsOpen;
+        ToolStripMenuItem cmsOpendir;
+
         ToolStripMenuItem cmsEdit;
         ToolStripMenuItem cmsEngrave;
         ToolStripMenuItem cmsRemove;
@@ -32,6 +36,26 @@ namespace Julia
             list.ImageListExt.Add(Properties.Resources.cd);
 
             ContextMenuStrip cms = new ContextMenuStrip();
+
+            cmsOpen = new ToolStripMenuItem("Open");
+            cmsOpen.Enabled = false;
+            Font bold = new Font(cmsOpen.Font, FontStyle.Bold);
+            cmsOpen.Font = bold;
+            cmsOpen.Click += delegate
+            {
+                OpenRunFile((ListViewItemGradient)list.SelectedItems[0]);
+            };
+            cms.Items.Add(cmsOpen);
+
+            cmsOpendir = new ToolStripMenuItem("Open dir");
+            cmsOpendir.Enabled = false;
+            cmsOpendir.Click += delegate
+            {
+                OpenDirectory(list.SelectedItems[0].SubItems[1].Text + Root.PathDelimiter + list.SelectedItems[0].SubItems[0].Text);
+            };
+            cms.Items.Add(cmsOpendir);
+
+            cms.Items.Add(new ToolStripSeparator());
 
             cmsEdit = new ToolStripMenuItem("Edit item");
             cmsEdit.Image = Properties.Resources.pencil;
@@ -55,8 +79,40 @@ namespace Julia
 
             list.ContextMenuStrip = cms;
 
+            list.DoubleClick += delegate
+            {
+                OpenRunFile((ListViewItemGradient)list.SelectedItems[0]);
+            };
+
             ReloadTags();
             ReloadFiles();
+        }
+
+        void OpenRunFile(ListViewItemGradient i)
+        {
+            string s = i.SubItems[1].Text + Root.PathDelimiter + i.SubItems[0].Text;
+            bool exe = i.ImageIndexExt == 4;
+            if (!File.Exists(s)) return;
+
+            if (exe && MessageBox.Show("Are you sure you want to execute this file?\n\nExecutables can damage your computer, make sure to only run executables from sources you trust.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != System.Windows.Forms.DialogResult.Yes)
+                return;
+
+            Process proc = new Process();
+            proc.StartInfo.FileName = s;
+            if (exe)
+            {
+                proc.Exited += delegate { i.VirtualBackColor = Color.White; };
+                i.VirtualBackColor = ListViewExtended.cInuse;
+            }
+            proc.EnableRaisingEvents = true;
+            proc.Start();
+            list.SelectedItems.Clear();
+        }
+
+        void OpenDirectory(string d) {
+            if (!File.Exists(d)) return;
+
+            Process.Start("explorer.exe", "/select,\"" + d + "\"");
         }
 
         int GetIcon(string f)
@@ -111,8 +167,24 @@ namespace Julia
             bool hasitems = list.SelectedIndices.Count > 0;
             bool hasone = list.SelectedIndices.Count == 1;
 
-            menuEditEdit.Enabled = menuEditEngrave.Enabled = cmsEdit.Enabled = cmsEngrave.Enabled = hasone;
+            menuEditEdit.Enabled = menuEditEngrave.Enabled = cmsEdit.Enabled = cmsEngrave.Enabled = cmsOpen.Enabled = cmsOpendir.Enabled = hasone;
             menuEditRemove.Enabled = cmsRemove.Enabled = hasitems;
+
+            if (hasone)
+            {
+                ListViewItemGradient i = (ListViewItemGradient)list.SelectedItems[0];
+
+                if (i.ImageIndexExt == 4)
+                {
+                    cmsOpen.Text = "Execute";
+                    cmsOpen.Image = Properties.Resources.application_xp_terminal;
+                }
+                else
+                {
+                    cmsOpen.Text = "Open";
+                    cmsOpen.Image = null;
+                }
+            }
         }
 
         private void menuEditRemove_Click(object sender, EventArgs e)
@@ -120,7 +192,7 @@ namespace Julia
             if (MessageBox.Show("Are you sure you want to remove the selected " + (list.SelectedIndices.Count > 1 ? list.SelectedIndices.Count + " files" : "file") + "?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != System.Windows.Forms.DialogResult.Yes)
                 return;
 
-            foreach (ListViewItem i in list.Items)
+            foreach (ListViewItem i in list.SelectedItems)
             {
                 if (Database.NonQuery("DELETE FROM files WHERE rowid=" + i.SubItems[3].Text, Root.Connection) != null)
                 {
