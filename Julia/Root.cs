@@ -30,8 +30,10 @@ public class Root
     ICON_EXE = 4,
     ICON_DB = 5,
     ICON_ARCHIVE = 6,
-    ICON_DISC = 7
-    ;
+    ICON_DISC = 7;
+
+    //Maximum file size for step folder
+    public const long MAX_FILE_SIZE_IMG = 30 * 1024 * 1024; //30MB
 
     public static void Log(string s)
     {
