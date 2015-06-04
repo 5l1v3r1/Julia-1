@@ -34,17 +34,34 @@ namespace Julia
 
             filelist.ExtType = ListViewExtendedType.Clean;
             filelist.SingleColumn = true;
+            taglist.ExtType = ListViewExtendedType.Clean;
+            taglist.SingleColumn = true;
 
             img.Cursor = Cursors.Hand;
-            bool toggle = false;
-            img.Click += delegate
+            img.MouseClick += (object sender, MouseEventArgs e) =>
             {
+                if (!toggle && img.Image.Size.Height > img.Size.Height && img.Image.Size.Width > img.Size.Width)
+                {
+                    double xratio = (double)img.Image.Size.Width / (double)img.Size.Width;
+                    double yratio = (double)img.Image.Size.Height / (double)img.Size.Height;
+
+                    int xoffset = (int)Math.Round((e.X * xratio) - (img.Image.Size.Width / 2d));
+                    int yoffset = (int)Math.Round((e.Y * yratio) - (img.Image.Size.Height / 2d));
+
+                    int roffset = (xoffset > 0 ? xoffset : 0);
+                    int boffset = (yoffset > 0 ? yoffset : 0);
+                    int loffset = (xoffset < 0 ? -xoffset : 0);
+                    int toffset = (yoffset < 0 ? -yoffset : 0);
+
+                    img.Padding = new Padding(loffset, toffset, roffset, boffset);
+                }
+                else
+                    img.Padding = new Padding(0, 0, 0, 0);
                 img.SizeMode = (toggle ? PictureBoxSizeMode.Zoom : PictureBoxSizeMode.CenterImage);
                 toggle = !toggle;
             };
-            //img.MouseEnter += delegate { img.Cursor = Cursors.Hand; };
-            //img.MouseLeave += delegate { img.Cursor = Cursors.SizeAll; };
         }
+        bool toggle = false;
 
         private void filelist_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -59,10 +76,13 @@ namespace Julia
 
             long size = (new FileInfo(rpath)).Length;
 
+            if (img.Image != null) img.Image.Dispose();
             switch (((ListViewItemGradient)filelist.SelectedItems[0]).ImageIndexExt)
             {
                 case Root.ICON_IMG:
-                    if(img.Image != null) img.Image.Dispose();
+                    img.SizeMode = PictureBoxSizeMode.Zoom;
+                    toggle = false;
+
                     if(size <= Root.MAX_FILE_SIZE_IMG)
                         img.Image = Image.FromFile(rpath);
                     break;

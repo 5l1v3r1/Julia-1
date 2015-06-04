@@ -39,7 +39,7 @@ namespace Julia
             set
             {
                 _SingleColumn = value;
-                this.Scrollable = !value;
+                //this.Scrollable = !value;
                 if (value) this.Columns[0].Width = this.Width - 4;
             }
         }
