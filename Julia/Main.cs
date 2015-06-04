@@ -18,6 +18,8 @@ namespace Julia
         ToolStripMenuItem cmsEdit;
         ToolStripMenuItem cmsEngrave;
         ToolStripMenuItem cmsRemove;
+        public static List<Image> imgList;
+
         public Main()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace Julia
             list.ImageListExt.Add(Properties.Resources.database);
             list.ImageListExt.Add(Properties.Resources.page_white_zip);
             list.ImageListExt.Add(Properties.Resources.cd);
+            imgList = list.ImageListExt;
 
             ContextMenuStrip cms = new ContextMenuStrip();
 
@@ -124,7 +127,7 @@ namespace Julia
             Process.Start("explorer.exe", "/select,\"" + d + "\"");
         }
 
-        int GetIcon(string f)
+        public static int GetIcon(string f)
         {
             switch (Path.GetExtension(f).TrimStart('.'))
             {
@@ -334,6 +337,19 @@ namespace Julia
         private void menuEditEngrave_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void menuFileStep_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+
+            string[] s = Directory.GetFiles(fbd.SelectedPath);
+            if (s.Length < 1) return;
+
+            StepFolder sf = new StepFolder(s);
+            sf.ShowDialog();
         }
     }
 }
