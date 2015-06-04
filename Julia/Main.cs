@@ -94,7 +94,7 @@ namespace Julia
         void OpenRunFile(ListViewItemGradient i)
         {
             string s = i.SubItems[1].Text + Root.PathDelimiter + i.SubItems[0].Text;
-            bool exe = i.ImageIndexExt == 4;
+            bool exe = i.ImageIndexExt == Root.ICON_EXE;
             if (!File.Exists(s)) return;
 
             if (exe && MessageBox.Show("Are you sure you want to execute this file?\n\nExecutables can damage your computer, make sure to only run files from sources you trust.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != System.Windows.Forms.DialogResult.Yes)
@@ -136,7 +136,7 @@ namespace Julia
                 case "dmg":
                 case "cue":
                 case "dat":
-                    return 7;
+                    return Root.ICON_DISC;
                 case "7z":
                 case "rar":
                 case "zip":
@@ -144,17 +144,17 @@ namespace Julia
                 case "gz":
                 case "lz":
                 case "xz":
-                    return 6;
+                    return Root.ICON_ARCHIVE;
                 case "sql":
                 case "db":
                 case "sqlite":
                 case "mysql":
-                    return 5;
+                    return Root.ICON_DB;
                 case "bat":
                 case "exe":
                 case "msi":
                 case "jar":
-                    return 4;
+                    return Root.ICON_EXE;
                 case "png":
                 case "jpg":
                 case "jpeg":
@@ -162,15 +162,15 @@ namespace Julia
                 case "tif":
                 case "gif":
                 case "bmp":
-                    return 3;
+                    return Root.ICON_IMG;
                 case "rtf":
                 case "doc":
                 case "docx":
                 case "tex":
                 case "txt":
-                    return 2;
+                    return Root.ICON_TXT;
                 default:
-                    return 1;
+                    return Root.ICON_FILE;
             }
         }
 

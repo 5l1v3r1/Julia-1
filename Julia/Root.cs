@@ -21,6 +21,18 @@ public class Root
     //Global connection for julia.db in the working directory
     public static SQLiteConnection Connection = null;
 
+    //Constants for icon nums
+    public const int
+    ICON_FOLDER = 0,
+    ICON_FILE = 1,
+    ICON_TXT = 2,
+    ICON_IMG = 3,
+    ICON_EXE = 4,
+    ICON_DB = 5,
+    ICON_ARCHIVE = 6,
+    ICON_DISC = 7
+    ;
+
     public static void Log(string s)
     {
         #if DEBUG
