@@ -94,19 +94,28 @@ namespace Julia
             bool exe = i.ImageIndexExt == 4;
             if (!File.Exists(s)) return;
 
-            if (exe && MessageBox.Show("Are you sure you want to execute this file?\n\nExecutables can damage your computer, make sure to only run executables from sources you trust.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != System.Windows.Forms.DialogResult.Yes)
+            if (exe && MessageBox.Show("Are you sure you want to execute this file?\n\nExecutables can damage your computer, make sure to only run files from sources you trust.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != System.Windows.Forms.DialogResult.Yes)
                 return;
 
-            Process proc = new Process();
-            proc.StartInfo.FileName = s;
-            if (exe)
+            Process proc = null;
+            try
             {
-                proc.Exited += delegate { i.VirtualBackColor = Color.White; };
-                i.VirtualBackColor = ListViewExtended.cInuse;
+                proc = new Process();
+                proc.StartInfo.FileName = s;
+                if (exe)
+                {
+                    proc.Exited += delegate { i.VirtualBackColor = Color.White; };
+                    i.VirtualBackColor = ListViewExtended.cInuse;
+                }
+                proc.EnableRaisingEvents = true;
+                proc.Start();
+                list.SelectedItems.Clear();
             }
-            proc.EnableRaisingEvents = true;
-            proc.Start();
-            list.SelectedItems.Clear();
+            catch (Win32Exception)
+            {
+                proc.Dispose();
+                MessageBox.Show("There is no default program setup to open this type of file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void OpenDirectory(string d) {
