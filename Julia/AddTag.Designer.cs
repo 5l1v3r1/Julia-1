@@ -71,6 +71,8 @@
             // 
             this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTag.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtTag.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtTag.Location = new System.Drawing.Point(47, 12);
             this.txtTag.Name = "txtTag";
             this.txtTag.Size = new System.Drawing.Size(225, 20);

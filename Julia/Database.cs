@@ -58,6 +58,7 @@ namespace Julia
                     for (int i = 0; i < r.VisibleFieldCount; i++)
                         row.Add(r.GetValue(i));
                     returned++;
+                    rows.Add(row.ToArray());
                 }
 
                 r.Close();

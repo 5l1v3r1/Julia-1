@@ -157,7 +157,7 @@ namespace Julia
                 if (!SingleColumn && bg == Color.White) e.Graphics.FillRectangle(SystemBrushes.MenuBar, new Rectangle(e.Bounds.X, e.Bounds.Y, Columns[0].Width - 1, e.Bounds.Height));
                 
                 int offsetx = 0;
-                for (int i = 0; i < e.Item.SubItems.Count; i++)
+                for (int i = 0; i < Columns.Count && i < e.Item.SubItems.Count; i++)
                 {
                     if (i > 0) offsetx += this.Columns[i - 1].Width;
                     int x = e.Bounds.X + 3 + offsetx;

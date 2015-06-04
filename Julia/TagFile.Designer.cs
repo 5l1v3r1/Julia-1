@@ -83,6 +83,7 @@
             this.taglist.TabIndex = 3;
             this.taglist.UseCompatibleStateImageBehavior = false;
             this.taglist.View = System.Windows.Forms.View.Details;
+            this.taglist.SelectedIndexChanged += new System.EventHandler(this.taglist_SelectedIndexChanged);
             // 
             // colTag
             // 

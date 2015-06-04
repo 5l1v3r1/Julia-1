@@ -10,7 +10,7 @@ namespace Julia
 {
     public partial class AddTag : Form
     {
-        public string Tag = "";
+        public new string Tag = "";
         public bool Canceled = true;
 
         public AddTag()
@@ -26,10 +26,16 @@ namespace Julia
                     this.Close();
                 }
             };
+
+            foreach (Main.Tag tag in Main.Tags)
+                txtTag.AutoCompleteCustomSource.Add(tag.Name);
         }
 
         private void bAdd_Click(object sender, EventArgs e)
         {
+            Canceled = false;
+            Tag = txtTag.Text;
+            this.Close();
         }
 
         private void bCancel_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@ namespace Julia
         public string[] Tags;
         public bool Canceled = true;
 
+        ToolStripMenuItem i2;
         public TagFile()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace Julia
 
             cms.Items.Add(new ToolStripSeparator());
 
-            ToolStripMenuItem i2 = new ToolStripMenuItem("Remove");
+            i2 = new ToolStripMenuItem("Remove");
             i2.Image = Properties.Resources.cross;
             i2.Enabled = false;
             cms.Items.Add(i2);
@@ -51,12 +52,20 @@ namespace Julia
         private void bTag_Click(object sender, EventArgs e)
         {
             Canceled = false;
+            List<string> str = new List<string>();
+            foreach (ListViewItem i in taglist.Items) str.Add(i.Text);
+            Tags = str.ToArray();
             this.Close();
         }
 
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void taglist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            i2.Enabled = taglist.SelectedIndices.Count > 0;
         }
     }
 }
