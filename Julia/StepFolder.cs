@@ -38,8 +38,10 @@ namespace Julia
             taglist.SingleColumn = true;
 
             img.Cursor = Cursors.Hand;
-            img.MouseClick += (object sender, MouseEventArgs e) =>
+            bool Dragging = false;
+            img.MouseDown += (object sender, MouseEventArgs e) =>
             {
+                Dragging = true;
                 if (!toggle && img.Image.Size.Height > img.Size.Height && img.Image.Size.Width > img.Size.Width)
                 {
                     double xratio = (double)img.Image.Size.Width / (double)img.Size.Width;
@@ -59,6 +61,26 @@ namespace Julia
                     img.Padding = new Padding(0, 0, 0, 0);
                 img.SizeMode = (toggle ? PictureBoxSizeMode.Zoom : PictureBoxSizeMode.CenterImage);
                 toggle = !toggle;
+            };
+            img.MouseUp += delegate { Dragging = false; };
+            img.MouseMove += (object sender, MouseEventArgs e) =>
+            {
+                if (Dragging)
+                {
+                    double xratio = (double)img.Image.Size.Width / (double)img.Size.Width;
+                    double yratio = (double)img.Image.Size.Height / (double)img.Size.Height;
+
+                    int xoffset = (int)Math.Round((e.X * xratio) - (img.Image.Size.Width / 2d));
+                    int yoffset = (int)Math.Round((e.Y * yratio) - (img.Image.Size.Height / 2d));
+
+                    int roffset = (xoffset > 0 ? xoffset : 0);
+                    int boffset = (yoffset > 0 ? yoffset : 0);
+                    int loffset = (xoffset < 0 ? -xoffset : 0);
+                    int toffset = (yoffset < 0 ? -yoffset : 0);
+
+                    img.Padding = new Padding(loffset, toffset, roffset, boffset);
+                    img.Invalidate();
+                }
             };
         }
         bool toggle = false;
