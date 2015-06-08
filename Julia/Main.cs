@@ -351,5 +351,11 @@ namespace Julia
             StepFolder sf = new StepFolder(s);
             sf.ShowDialog();
         }
+
+        private void menuActionSearch_Click(object sender, EventArgs e)
+        {
+            Search search = new Search();
+            search.ShowDialog();
+        }
     }
 }

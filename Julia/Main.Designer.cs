@@ -30,11 +30,11 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileStep = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuAction = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileStep = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileTag = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileImportText = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,10 +77,17 @@
             this.menuFile.Size = new System.Drawing.Size(37, 20);
             this.menuFile.Text = "File";
             // 
+            // menuFileStep
+            // 
+            this.menuFileStep.Name = "menuFileStep";
+            this.menuFileStep.Size = new System.Drawing.Size(140, 22);
+            this.menuFileStep.Text = "Step folder...";
+            this.menuFileStep.Click += new System.EventHandler(this.menuFileStep_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(137, 6);
             // 
             // menuEdit
             // 
@@ -106,18 +113,11 @@
             this.menuAction.Size = new System.Drawing.Size(54, 20);
             this.menuAction.Text = "Action";
             // 
-            // menuFileStep
-            // 
-            this.menuFileStep.Name = "menuFileStep";
-            this.menuFileStep.Size = new System.Drawing.Size(152, 22);
-            this.menuFileStep.Text = "Step folder...";
-            this.menuFileStep.Click += new System.EventHandler(this.menuFileStep_Click);
-            // 
             // menuFileTag
             // 
             this.menuFileTag.Image = global::Julia.Properties.Resources.tag_blue;
             this.menuFileTag.Name = "menuFileTag";
-            this.menuFileTag.Size = new System.Drawing.Size(152, 22);
+            this.menuFileTag.Size = new System.Drawing.Size(140, 22);
             this.menuFileTag.Text = "Tag file...";
             this.menuFileTag.Click += new System.EventHandler(this.menuFileTag_Click);
             // 
@@ -128,7 +128,7 @@
             this.menuFileImportDb});
             this.menuFileImport.Image = global::Julia.Properties.Resources.arrow_down;
             this.menuFileImport.Name = "menuFileImport";
-            this.menuFileImport.Size = new System.Drawing.Size(152, 22);
+            this.menuFileImport.Size = new System.Drawing.Size(140, 22);
             this.menuFileImport.Text = "Import...";
             // 
             // menuFileImportText
@@ -152,7 +152,7 @@
             this.menuFileExportDb});
             this.menuFileExport.Image = global::Julia.Properties.Resources.disk;
             this.menuFileExport.Name = "menuFileExport";
-            this.menuFileExport.Size = new System.Drawing.Size(152, 22);
+            this.menuFileExport.Size = new System.Drawing.Size(140, 22);
             this.menuFileExport.Text = "Export...";
             // 
             // menuFileExportText
@@ -202,6 +202,7 @@
             this.menuActionSearch.Name = "menuActionSearch";
             this.menuActionSearch.Size = new System.Drawing.Size(109, 22);
             this.menuActionSearch.Text = "Search";
+            this.menuActionSearch.Click += new System.EventHandler(this.menuActionSearch_Click);
             // 
             // list
             // 
